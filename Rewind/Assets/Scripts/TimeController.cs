@@ -28,6 +28,7 @@ public class TimeController : MonoBehaviour
         ArrayList positions = this.playerPositions;
         GameObject playerClone = Instantiate(player);
         playerClone.GetComponent<Player>().enabled = false;
+        Destroy(playerClone.GetComponent<Rigidbody>());
 
         for (var i = positions.Count - 1; i > 0; i--)
         {
