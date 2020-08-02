@@ -43,4 +43,11 @@ public class Player : MonoBehaviour
 
         return false;
     }
+
+    public void Die()
+    {
+        TimeController.instance.SpawnPlayerAndReverse();
+        GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<SpawnPoint>().SpawnPlayer();
+        Destroy(this.gameObject);
+    }
 }
