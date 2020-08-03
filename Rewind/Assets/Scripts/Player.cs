@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private LayerMask whatIsGround;
 
 
+    private float recordMovementDuration = 3f;
+
     void Update()
     {
         transform.Translate(Vector3.right * 8.0f * Time.deltaTime * Input.GetAxis("Horizontal"));
@@ -31,7 +33,7 @@ public class Player : MonoBehaviour
 
     private bool IsOnGround()
     {
-        Collider[] colliding = Physics.OverlapSphere(this.groundCheck.position, 0.2f);
+        Collider[] colliding = Physics.OverlapSphere(this.groundCheck.position, 0.3f);
 
         foreach(var col in colliding)
         {

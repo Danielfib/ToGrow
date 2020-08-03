@@ -12,7 +12,7 @@ public class TimeController : MonoBehaviour
 
     [SerializeField]
     [Tooltip("How many frames between clone position update")]
-    private int speedRatio = 3; // frames to skip per clone update
+    private int speedRatio = 1; // frames to skip per clone update
 
     private void Awake()
     {
@@ -32,17 +32,18 @@ public class TimeController : MonoBehaviour
             TryGetPlayer();
 
 
-        //prevent clone to stay still when player stood still (should I prevent this?)
-        if(playerPositions.Count > 0)
-        {
-            if(player.transform.position != (Vector3)playerPositions[Mathf.Max(playerPositions.Count-1, 0)])
-            {
-                playerPositions.Add(player.transform.position);
-            }
-        } else
-        {
-            playerPositions.Add(player.transform.position);
-        }
+        playerPositions.Add(player.transform.position);
+        ////prevent clone to stay still when player stood still (should I prevent this?)
+        //if (playerPositions.Count > 0)
+        //{
+        //    if(player.transform.position != (Vector3)playerPositions[Mathf.Max(playerPositions.Count-1, 0)])
+        //    {
+        //        playerPositions.Add(player.transform.position);
+        //    }
+        //} else
+        //{
+        //    playerPositions.Add(player.transform.position);
+        //}
     }
 
     public void SpawnPlayerAndReverse()
@@ -55,9 +56,13 @@ public class TimeController : MonoBehaviour
     {
         GameObject playerClone = Instantiate(playerClonePrefab);
 
+        LineRenderer lr = playerClone.GetComponent<LineRenderer>();
+        Vector3[] pos = (Vector3[])positions.ToArray(typeof(Vector3));
+        lr.positionCount = pos.Length;
+        lr.SetPositions(pos);
+
         for (var i = positions.Count - 1; i > 0; i--)
         {
-
             playerClone.transform.position = (Vector3)positions[i];
 
             for (var s = 0; s < this.speedRatio; s++)
