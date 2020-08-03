@@ -28,12 +28,12 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        this.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+        this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 300);
     }
 
     private bool IsOnGround()
     {
-        Collider[] colliding = Physics.OverlapSphere(this.groundCheck.position, 0.3f);
+        Collider2D[] colliding = Physics2D.OverlapCircleAll(this.groundCheck.position, 0.3f);
 
         foreach(var col in colliding)
         {

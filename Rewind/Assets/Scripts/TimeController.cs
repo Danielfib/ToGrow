@@ -12,7 +12,7 @@ public class TimeController : MonoBehaviour
 
     [SerializeField]
     [Tooltip("How many frames between clone position update")]
-    private int speedRatio = 1; // frames to skip per clone update
+    private int speedRatio;
 
     private void Awake()
     {
@@ -66,7 +66,9 @@ public class TimeController : MonoBehaviour
             playerClone.transform.position = (Vector3)positions[i];
 
             for (var s = 0; s < this.speedRatio; s++)
-                yield return new WaitForEndOfFrame();
+            {
+                yield return new WaitForFixedUpdate();
+            }
         }
 
         yield return new WaitForSeconds(1);
