@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class Dialogue : MonoBehaviour
 {
@@ -10,21 +11,50 @@ public class Dialogue : MonoBehaviour
     private int index;
     public float typeSpeed;
 
+    public GameObject dialogueCanvas;
     public GameObject continueButton;
 
     private AudioSource audioSource;
 
-    public void Start()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        StartCoroutine(Type());
+        if(sentences.Length > 0)
+        {
+            FadeInDialoguePanel();
+        } else
+        {
+            dialogueCanvas.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        {
+            UserSkip();
+        }
+    }
+
+    private void UserSkip()
+    {
+        if (continueButton.activeInHierarchy)
+        {
+            NextSentence();
+        } else
+        {
+            StopAllCoroutines();
+            //StopCoroutine(Type());
+            textDisplay.text = sentences[index];
+            continueButton.SetActive(true);
+        }
     }
 
     IEnumerator Type()
     {
         continueButton.SetActive(false);
-
-        foreach(char letter in sentences[index].ToCharArray())
+        textDisplay.text = "";
+        foreach (char letter in sentences[index].ToCharArray())
         {
             textDisplay.text += letter;
             yield return new WaitForSeconds(typeSpeed);
@@ -44,8 +74,20 @@ public class Dialogue : MonoBehaviour
         } else
         {
             //dialogue complete
-            continueButton.SetActive(false);
-            textDisplay.text = "";
+            //textDisplay.text = "";
+            FadeOutDialoguePanel();
         }
+    }
+
+    private void FadeOutDialoguePanel()
+    {
+        dialogueCanvas.GetComponent<CanvasGroup>().DOFade(0, 1).OnComplete(() => dialogueCanvas.SetActive(false));
+    }
+
+    private void FadeInDialoguePanel()
+    {
+        dialogueCanvas.SetActive(true);
+        dialogueCanvas.GetComponent<CanvasGroup>().alpha = 0;
+        dialogueCanvas.GetComponent<CanvasGroup>().DOFade(1, 1).OnComplete(() => StartCoroutine(Type()));
     }
 }
