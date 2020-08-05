@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (IsOnGround())
+            if (IsOnGround() || this.transform.parent != null)
             {
                 Jump();
             }
