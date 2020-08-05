@@ -5,21 +5,35 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class PlayerClone : MonoBehaviour
 {
-    private void OnCollisionStay2D(Collision2D collision)
+    private float backupGravityScale;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player"
+        if (collision.gameObject.tag == "Player"
             && collision.gameObject.transform.parent == null)
         {
-            collision.gameObject.transform.SetParent(this.transform);
+            collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player"
+            && collision.gameObject.transform.parent == null)
+        {
+            collision.gameObject.transform.SetParent(this.transform);
+            backupGravityScale = collision.GetComponent<Rigidbody2D>().gravityScale;
+            collision.GetComponent<Rigidbody2D>().gravityScale = 0;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player"
             && collision.gameObject.transform.parent == this.transform)
         {
             collision.gameObject.transform.SetParent(null);
+            collision.GetComponent<Rigidbody2D>().gravityScale = backupGravityScale;
         }
     }
 }
