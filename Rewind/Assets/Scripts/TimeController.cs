@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using System.Linq;
+using static DG.Tweening.DOTweenCYInstruction;
 
 public class TimeController : MonoBehaviour
 {
     public GameObject playerClonePrefab;
-    public ArrayList playerPositions;
+    public List<Vector3> playerPositions = new List<Vector3>();
     private GameObject player;
 
     public static TimeController instance;
@@ -22,7 +25,6 @@ public class TimeController : MonoBehaviour
 
     void Start()
     {
-        playerPositions = new ArrayList();
         TryGetPlayer();
     }
 
@@ -48,30 +50,30 @@ public class TimeController : MonoBehaviour
 
     public void SpawnPlayerAndReverse()
     {
-        StartCoroutine(ReverseCoroutine((ArrayList)this.playerPositions.Clone()));
+        StartCoroutine(ReverseCoroutine(playerPositions.ToArray()));
         this.playerPositions.Clear();
     }
 
-    private IEnumerator ReverseCoroutine(ArrayList positions)
+    private IEnumerator ReverseCoroutine(Vector3[] positions)
     {
         GameObject playerClone = Instantiate(playerClonePrefab);
 
         LineRenderer lr = playerClone.GetComponent<LineRenderer>();
-        Vector3[] pos = (Vector3[])positions.ToArray(typeof(Vector3));
-        lr.positionCount = pos.Length;
-        lr.SetPositions(pos);
+        //reverses and cut the array in half
+        positions = positions.Reverse().Where((x, i) => i % 2 == 0).ToArray();
 
-        for (var i = positions.Count - 1; i > 0; i--)
-        {
-            playerClone.transform.position = (Vector3)positions[i];
+        lr.positionCount = positions.Length;
+        lr.SetPositions(positions);
 
-            for (var s = 0; s < this.speedRatio; s++)
-            {
-                yield return new WaitForFixedUpdate();
-            }
-        }
+        //TODO: velocity should be constant. Or path length!
+        yield return new WaitForCompletion(
+            playerClone.transform.DOPath(positions,
+                                         6, 
+                                         PathType.CatmullRom, 
+                                         PathMode.Sidescroller2D, 
+                                         5)
+        );
 
-        yield return new WaitForSeconds(1);
         Destroy(playerClone);
     }
 
