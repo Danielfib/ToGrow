@@ -21,11 +21,11 @@ public class Dialogue : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if(sentences.Length > 0)
         {
-            DisablePlayerInput();
+            GameManager.instance.DisablePlayerInput();
             FadeInDialoguePanel();
         } else
         {
-            EnablePlayerInput();
+            GameManager.instance.EnablePlayerInput();
             dialogueCanvas.SetActive(false);
         }
     }
@@ -84,7 +84,7 @@ public class Dialogue : MonoBehaviour
     private void FadeOutDialoguePanel()
     {
         dialogueCanvas.GetComponent<CanvasGroup>().DOFade(0, 1).OnComplete(() => dialogueCanvas.SetActive(false));
-        EnablePlayerInput();
+        GameManager.instance.FinishedInitialDialogue();
     }
 
     private void FadeInDialoguePanel()
@@ -92,15 +92,5 @@ public class Dialogue : MonoBehaviour
         dialogueCanvas.SetActive(true);
         dialogueCanvas.GetComponent<CanvasGroup>().alpha = 0;
         dialogueCanvas.GetComponent<CanvasGroup>().DOFade(1, 1).OnComplete(() => StartCoroutine(Type()));
-    }
-
-    private void DisablePlayerInput()
-    {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
-    }
-
-    private void EnablePlayerInput()
-    {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = true;
     }
 }
