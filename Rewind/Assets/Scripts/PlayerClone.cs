@@ -1,11 +1,17 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class PlayerClone : MonoBehaviour
 {
     private float backupGravityScale = 1f;
+    private LineRenderer lr;
+
+    [SerializeField]
+    private SpriteRenderer sr;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -37,5 +43,34 @@ public class PlayerClone : MonoBehaviour
             collision.gameObject.transform.SetParent(null);
             collision.GetComponent<Rigidbody2D>().gravityScale = backupGravityScale;
         }
+    }
+
+    private void Awake()
+    {
+        this.lr = this.GetComponent<LineRenderer>();
+    }
+
+    public void Reverse(Vector3[] positions, float duration)
+    {
+        //reverses and cut the array in half
+        positions = positions.Reverse().Where((x, i) => i % 2 == 0).ToArray();
+
+        lr.positionCount = positions.Length;
+        lr.SetPositions(positions);
+
+        //Color randomColor = new Color(Random.value, Random.value, Random.value, 0.4f);
+        Color randomColor = new Color(Random.Range(0.5f, 1), Random.Range(0.5f, 1), Random.Range(0.5f, 1), 0.4f);
+
+        sr.color = randomColor;
+        lr.material.color = randomColor;
+
+        this.transform.position = positions[0];
+
+        //TODO: velocity should be constant. Or path length!
+        this.transform.DOPath(positions,
+                              duration * 2,
+                              PathType.CatmullRom,
+                              PathMode.Sidescroller2D,
+                              5).SetEase(Ease.Flash).OnComplete(() => Destroy(this.gameObject));
     }
 }

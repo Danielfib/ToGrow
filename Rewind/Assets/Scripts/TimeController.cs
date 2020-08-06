@@ -17,6 +17,8 @@ public class TimeController : MonoBehaviour
     [Tooltip("How many frames between clone position update")]
     private int speedRatio;
 
+    private float timeSinceStart;
+
     private void Awake()
     {
         if (instance == null)
@@ -30,6 +32,8 @@ public class TimeController : MonoBehaviour
 
     void FixedUpdate()
     {
+        timeSinceStart += Time.fixedDeltaTime;
+
         if (player == null)
             TryGetPlayer();
 
@@ -52,29 +56,14 @@ public class TimeController : MonoBehaviour
     {
         StartCoroutine(ReverseCoroutine(playerPositions.ToArray()));
         this.playerPositions.Clear();
+        timeSinceStart = 0;
     }
 
     private IEnumerator ReverseCoroutine(Vector3[] positions)
     {
         GameObject playerClone = Instantiate(playerClonePrefab);
-
-        LineRenderer lr = playerClone.GetComponent<LineRenderer>();
-        //reverses and cut the array in half
-        positions = positions.Reverse().Where((x, i) => i % 2 == 0).ToArray();
-
-        lr.positionCount = positions.Length;
-        lr.SetPositions(positions);
-
-        //TODO: velocity should be constant. Or path length!
-        yield return new WaitForCompletion(
-            playerClone.transform.DOPath(positions,
-                                         6, 
-                                         PathType.CatmullRom, 
-                                         PathMode.Sidescroller2D, 
-                                         5)
-        );
-
-        Destroy(playerClone);
+        playerClone.GetComponent<PlayerClone>().Reverse(positions, timeSinceStart);
+        yield return new WaitForEndOfFrame();
     }
 
     private void TryGetPlayer()
