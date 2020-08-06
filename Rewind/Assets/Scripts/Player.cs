@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     [SerializeField]
@@ -9,13 +10,24 @@ public class Player : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsGround;
 
+    [SerializeField]
+    private Animator animator;
+
+    private Rigidbody2D rb;
 
     private float recordMovementDuration = 3f;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     void Update()
     {
-        transform.Translate(Vector3.right * 8.0f * Time.deltaTime * Input.GetAxis("Horizontal"));
-        //transform.Rotate(Vector3.up * 200.0f * Time.deltaTime * Input.GetAxis("Horizontal"));
+        animator.SetBool("IsGrounded", IsOnGround());
+
+        this.rb.velocity = new Vector2(Input.GetAxis("Horizontal") * 5, rb.velocity.y);
+        FlipSpriteOnWalkDirection();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -24,6 +36,15 @@ public class Player : MonoBehaviour
                 Jump();
             }
         }
+    }
+
+    private void FlipSpriteOnWalkDirection()
+    {
+        float currentVelX = this.gameObject.GetComponent<Rigidbody2D>().velocity.x;
+        if (currentVelX < 0)
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        else if (currentVelX > 0)
+            transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
     void Jump()
