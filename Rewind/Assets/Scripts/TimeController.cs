@@ -13,10 +13,7 @@ public class TimeController : MonoBehaviour
 
     public static TimeController instance;
 
-    [SerializeField]
-    [Tooltip("How many frames between clone position update")]
-    private int speedRatio;
-
+    public float recordTime;
     private float timeSinceStart;
 
     private void Awake()
@@ -38,7 +35,7 @@ public class TimeController : MonoBehaviour
             TryGetPlayer();
 
 
-        playerPositions.Add(player.transform.position);
+        playerPositions.Insert(0, player.transform.position);
         ////prevent clone to stay still when player stood still (should I prevent this?)
         //if (playerPositions.Count > 0)
         //{
@@ -50,6 +47,13 @@ public class TimeController : MonoBehaviour
         //{
         //    playerPositions.Add(player.transform.position);
         //}
+        
+        //50 fixed updates per second
+        if(playerPositions.Count > recordTime * 50)
+        {
+            //gets only last range
+            playerPositions = playerPositions.GetRange((int)(playerPositions.Count - 1 - (recordTime * 50)), playerPositions.Count - 1);
+        }
     }
 
     public void SpawnPlayerAndReverse()
@@ -62,7 +66,7 @@ public class TimeController : MonoBehaviour
     private IEnumerator ReverseCoroutine(Vector3[] positions)
     {
         GameObject playerClone = Instantiate(playerClonePrefab);
-        playerClone.GetComponent<PlayerClone>().Reverse(positions, timeSinceStart);
+        playerClone.GetComponent<PlayerClone>().Reverse(positions, Mathf.Min(timeSinceStart, recordTime));
         yield return new WaitForEndOfFrame();
     }
 

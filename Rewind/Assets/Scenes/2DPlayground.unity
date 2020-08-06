@@ -2601,7 +2601,7 @@ MonoBehaviour:
   playerClonePrefab: {fileID: 7321133278566404166, guid: 095ff0e5a37982e46bae6e8178bc13d4,
     type: 3}
   playerPositions: []
-  speedRatio: 2
+  recordTime: 3
 --- !u!4 &1768594999
 Transform:
   m_ObjectHideFlags: 0

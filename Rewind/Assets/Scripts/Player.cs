@@ -15,11 +15,14 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private float recordMovementDuration = 3f;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        GetComponent<TrailRenderer>().time = TimeController.instance.recordTime;
     }
 
     void Update()

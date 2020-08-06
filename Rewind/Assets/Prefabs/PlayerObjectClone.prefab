@@ -215,6 +215,15 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
+        value: 0.043319084
+        inSlope: 3.0947974
+        outSlope: 3.0947974
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.6904907
+      - serializedVersion: 3
+        time: 0.06552124
         value: 0.104156494
         inSlope: 0
         outSlope: 0
@@ -223,13 +232,22 @@ LineRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.99375
-        value: 0.11333332
+        time: 0.93137205
+        value: 0.096670724
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0.030009352
+        inSlope: -2.9056246
+        outSlope: -2.9056246
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.56830466
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -315,7 +333,7 @@ Animator:
   m_GameObject: {fileID: 7321133278566404166}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9d6eb81e42d0db143b85bc3163f3cc66, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -18,8 +18,6 @@ public class PlayerClone : MonoBehaviour
         if (collision.gameObject.tag == "Player"
             && collision.gameObject.transform.parent == null)
         {
-            Debug.Log("Entrou!");
-
             collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             //backupGravityScale = collision.GetComponent<Rigidbody2D>().gravityScale;
             collision.GetComponent<Rigidbody2D>().gravityScale = 0;
@@ -52,13 +50,12 @@ public class PlayerClone : MonoBehaviour
 
     public void Reverse(Vector3[] positions, float duration)
     {
-        //reverses and cut the array in half
-        positions = positions.Reverse().Where((x, i) => i % 2 == 0).ToArray();
+        //cut the array in half
+        positions = positions.Where((x, i) => i % 2 == 0).ToArray();
 
         lr.positionCount = positions.Length;
         lr.SetPositions(positions);
 
-        //Color randomColor = new Color(Random.value, Random.value, Random.value, 0.4f);
         Color randomColor = new Color(Random.Range(0.5f, 1), Random.Range(0.5f, 1), Random.Range(0.5f, 1), 0.4f);
 
         sr.color = randomColor;
