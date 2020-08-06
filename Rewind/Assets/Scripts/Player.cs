@@ -41,6 +41,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        if(this.transform.parent == null)
+            rb.gravityScale = 1;
+        else
+            rb.gravityScale = 0;
+    }
+
     private void FlipSpriteOnWalkDirection()
     {
         float currentVelX = this.gameObject.GetComponent<Rigidbody2D>().velocity.x;
@@ -57,7 +65,7 @@ public class Player : MonoBehaviour
 
     private bool IsOnGround()
     {
-        Collider2D[] colliding = Physics2D.OverlapCircleAll(this.groundCheck.position, 0.3f);
+        Collider2D[] colliding = Physics2D.OverlapCircleAll(this.groundCheck.position, 0.2f);
 
         foreach(var col in colliding)
         {

@@ -8,7 +8,6 @@ using static DG.Tweening.DOTweenCYInstruction;
 [RequireComponent(typeof(Collider2D))]
 public class PlayerClone : MonoBehaviour
 {
-    private float backupGravityScale = 1f;
     private LineRenderer lr;
 
     [SerializeField]
@@ -40,7 +39,6 @@ public class PlayerClone : MonoBehaviour
             && collision.gameObject.transform.parent == this.transform)
         {
             collision.gameObject.transform.SetParent(null);
-            collision.GetComponent<Rigidbody2D>().gravityScale = backupGravityScale;
         }
     }
 
@@ -64,7 +62,6 @@ public class PlayerClone : MonoBehaviour
 
         this.transform.position = positions[0];
 
-        //TODO: velocity should be constant. Or path length!
         this.transform.DOPath(positions,
                               duration * 2,
                               PathType.CatmullRom,
