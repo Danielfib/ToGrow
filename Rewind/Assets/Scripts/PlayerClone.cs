@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static DG.Tweening.DOTweenCYInstruction;
 
 [RequireComponent(typeof(Collider2D))]
 public class PlayerClone : MonoBehaviour
@@ -68,6 +69,21 @@ public class PlayerClone : MonoBehaviour
                               duration * 2,
                               PathType.CatmullRom,
                               PathMode.Sidescroller2D,
-                              5).SetEase(Ease.Flash).OnComplete(() => Destroy(this.gameObject));
+                              5).SetEase(Ease.Flash).OnComplete(() => Disappear());
+    }
+
+    private void Disappear()
+    {
+        StartCoroutine(DisappearCoroutine(1));
+    }
+
+    private IEnumerator DisappearCoroutine(float disappearDuration)
+    {
+        yield return new WaitForEndOfFrame();
+        Sequence fadeSeq = DOTween.Sequence();
+        fadeSeq.Append(sr.DOFade(0, disappearDuration));
+        fadeSeq.Join(lr.material.DOFade(0, disappearDuration));
+        fadeSeq.OnComplete(() => Destroy(this.gameObject));
+        fadeSeq.Play();
     }
 }
