@@ -22,11 +22,15 @@ public class Parallax : MonoBehaviour
 
     void Update()
     {
+        float temp = cam.transform.position.x * (1 - pFactor);
         float dist = cam.transform.position.x * pFactor;
 
         if(shouldParallaxInY)
             transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
         else
             transform.position = new Vector3(startPos + dist, cachedY, transform.position.z);
+
+        if (temp > startPos + length) startPos += length;
+        else if (temp < startPos - length) startPos -= length;
     }
 }
