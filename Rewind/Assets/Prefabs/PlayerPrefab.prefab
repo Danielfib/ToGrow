@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000f7d685f3
+  m_ApplyToSortingLayers: 00000000f7d685f35b7f5cb0
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -227,6 +227,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   animator: {fileID: 3579016256248730609}
+  lastCheckpoint: {fileID: 0}
 --- !u!96 &2302742860244905072
 TrailRenderer:
   serializedVersion: 2
