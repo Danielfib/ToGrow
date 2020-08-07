@@ -21,6 +21,14 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseMenuManager.instance.OpenPauseMenu();
+        }
+    }
+
     public void DisablePlayerInput()
     {
         var playerGO = GameObject.FindGameObjectWithTag("Player");
