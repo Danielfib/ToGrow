@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         var playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO != null)
         {
+            Debug.Log("Disabling input");
             playerGO.GetComponent<Player>().enabled = false;
         }
     }
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         var playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO != null)
         {
+            Debug.Log("Enabling input");
             playerGO.GetComponent<Player>().enabled = true;
         } else
         {

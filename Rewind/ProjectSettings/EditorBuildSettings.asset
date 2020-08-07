@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2. Pitfall.unity
     guid: 3ffad2d36039e1245a74cc50bb3ef680
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/2DPlayground.unity
     guid: e90f9603db384d14bb998c7763da9379
+  - enabled: 1
+    path: Assets/Scenes/3. Getting Over It.unity
+    guid: 066d068ccc3dcaa408fb9dd372afd5c4
   m_configObjects: {}

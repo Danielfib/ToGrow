@@ -10,7 +10,7 @@ public class Goal : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Win!");
-            //GameManager.instance.TransitionToNextScene();
+            GameManager.instance.TransitionToNextScene();
         }
     }
 }

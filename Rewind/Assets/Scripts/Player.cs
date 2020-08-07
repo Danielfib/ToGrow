@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 300);
+        this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 380);
     }
 
     private bool IsOnGround()
