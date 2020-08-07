@@ -63,7 +63,7 @@ public class PlayerClone : MonoBehaviour
         this.transform.position = positions[0];
 
         this.transform.DOPath(positions,
-                              duration * 2,
+                              duration * 3,
                               PathType.CatmullRom,
                               PathMode.Sidescroller2D,
                               5).SetEase(Ease.Flash).OnComplete(() => Disappear());
