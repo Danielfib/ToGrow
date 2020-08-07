@@ -83,8 +83,8 @@ public class PlayerClone : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         Sequence fadeSeq = DOTween.Sequence();
-        fadeSeq.Append(sr.DOFade(0, disappearDuration));
-        fadeSeq.Join(lr.material.DOFade(0, disappearDuration));
+        fadeSeq.Append(sr.DOFade(0.04f, disappearDuration));
+        fadeSeq.Join(lr.material.DOFade(0.04f, disappearDuration));
         fadeSeq.OnComplete(() => Destroy(this.gameObject));
         fadeSeq.Play();
     }
