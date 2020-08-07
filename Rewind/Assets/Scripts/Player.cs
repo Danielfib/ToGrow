@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    [HideInInspector]
+    public SpawnPoint lastCheckpoint;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -81,7 +84,7 @@ public class Player : MonoBehaviour
     public void Die()
     {
         TimeController.instance.SpawnPlayerAndReverse();
-        GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<SpawnPoint>().SpawnPlayer();
+        lastCheckpoint.SpawnPlayer();
         Destroy(this.gameObject);
     }
 }
