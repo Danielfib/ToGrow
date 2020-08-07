@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
-    [SerializeField]
-    private Scene[] levels;
 
     private int currentLvl = 0;
 
@@ -46,18 +44,24 @@ public class GameManager : MonoBehaviour
 
     public void FinishedInitialDialogue()
     {
-        EnablePlayerInput();
+        if (currentLvl == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            //ending scene
+            GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 0, -10);
+            GameObject.FindObjectOfType<CanvasGroup>().DOFade(0, 1);
+        }
+        else
+        {
+            EnablePlayerInput();
+        }
     }
 
     public void TransitionToNextScene()
     {
         currentLvl++;
-        if (currentLvl == levels.Length)
+        if (currentLvl < SceneManager.sceneCountInBuildSettings)
         {
-            //TODO: game finish screen
-        } else
-        {
-            SceneManager.LoadScene(levels[currentLvl].handle);
+            SceneManager.LoadScene(currentLvl);
         }
     }
 }

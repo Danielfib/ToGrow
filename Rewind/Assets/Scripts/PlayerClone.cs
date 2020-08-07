@@ -19,7 +19,6 @@ public class PlayerClone : MonoBehaviour
             && collision.gameObject.transform.parent == null)
         {
             collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            //backupGravityScale = collision.GetComponent<Rigidbody2D>().gravityScale;
             collision.GetComponent<Rigidbody2D>().gravityScale = 0;
         }
     }

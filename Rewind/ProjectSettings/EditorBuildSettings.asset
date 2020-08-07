@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4. Elevate Yourself.unity
     guid: aff581736f3400d4d9ed4db78a9aaa0c
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: be148859deee78e46b6e2754e8401b2d
   m_configObjects: {}
