@@ -8,12 +8,21 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    [SerializeField]
+    private Material normal;
+    [SerializeField]
+    private Material greyscale;
+
+    private SpriteRenderer sr;
+
     void Start()
     {
         if (GameObject.FindGameObjectWithTag("Player") == null && this.name == "InitialCheckpoint")
         {
             SpawnPlayer();
         }
+
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void SpawnPlayer()
@@ -42,11 +51,11 @@ public class SpawnPoint : MonoBehaviour
 
     public void ActivateCheckpoint()
     {
-
+        sr.material = normal;
     }
 
     public void DeactivateCheckpoint()
     {
-
+        sr.material = greyscale;
     }
 }
