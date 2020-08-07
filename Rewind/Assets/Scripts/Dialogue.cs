@@ -27,6 +27,7 @@ public class Dialogue : MonoBehaviour
         {
             GameManager.instance.EnablePlayerInput();
             dialogueCanvas.SetActive(false);
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -83,8 +84,11 @@ public class Dialogue : MonoBehaviour
 
     private void FadeOutDialoguePanel()
     {
-        dialogueCanvas.GetComponent<CanvasGroup>().DOFade(0, 1).OnComplete(() => dialogueCanvas.SetActive(false));
         GameManager.instance.FinishedInitialDialogue();
+        dialogueCanvas.GetComponent<CanvasGroup>().DOFade(0, 1).OnComplete(() => {
+            dialogueCanvas.SetActive(false);
+            this.gameObject.SetActive(false);
+        });
     }
 
     private void FadeInDialoguePanel()
