@@ -18,8 +18,14 @@ public class PlayerClone : MonoBehaviour
         if (collision.gameObject.tag == "Player"
             && collision.gameObject.transform.parent == null)
         {
-            collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            collision.GetComponent<Rigidbody2D>().gravityScale = 0;
+            Player p = collision.GetComponent<Player>();
+            Rigidbody2D prb = collision.GetComponent<Rigidbody2D>();
+
+            if (!p.isAvoidingClones)
+            {
+                prb.velocity = Vector2.zero;
+                prb.gravityScale = 0;
+            }
         }
     }
 

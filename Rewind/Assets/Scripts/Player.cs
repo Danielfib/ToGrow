@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public SpawnPoint lastCheckpoint;
 
+    [HideInInspector]
+    public bool isAvoidingClones;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -64,6 +67,16 @@ public class Player : MonoBehaviour
     void Jump()
     {
         this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 380);
+
+        if (transform.parent != null)
+            StartCoroutine(AvoidCloneCoroutine());
+    }
+
+    private IEnumerator AvoidCloneCoroutine()
+    {
+        isAvoidingClones = true;
+        yield return new WaitForSeconds(0.3f);
+        isAvoidingClones = false;
     }
 
     private bool IsOnGround()
