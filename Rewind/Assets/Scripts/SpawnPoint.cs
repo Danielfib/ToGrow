@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class SpawnPoint : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class SpawnPoint : MonoBehaviour
     private Material greyscale;
 
     private SpriteRenderer sr;
+    private Light2D light2D;
+    private Flickering2DLight flickering2DLight;
 
     void Start()
     {
@@ -23,6 +26,8 @@ public class SpawnPoint : MonoBehaviour
         }
 
         sr = GetComponent<SpriteRenderer>();
+        light2D = GetComponent<Light2D>();
+        flickering2DLight = GetComponent<Flickering2DLight>();
     }
 
     public void SpawnPlayer()
@@ -52,10 +57,14 @@ public class SpawnPoint : MonoBehaviour
     public void ActivateCheckpoint()
     {
         sr.material = normal;
+        flickering2DLight.enabled = true;
+        light2D.enabled = true;
     }
 
     public void DeactivateCheckpoint()
     {
         sr.material = greyscale;
+        flickering2DLight.enabled = false;
+        light2D.enabled = false;
     }
 }
