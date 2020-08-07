@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    private int currentLvl = 0;
+    private int currentLvl = 1;
 
     private void Awake()
     {
