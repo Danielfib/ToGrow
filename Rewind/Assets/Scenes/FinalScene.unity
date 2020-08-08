@@ -24344,7 +24344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 135681640}
   sentences:
-  - 'THERAPIST: '
+  - 'THERAPIST: You did great, how are you feeling?'
   - ...
   - 'YOU: Thank... you.'
   typeSpeed: 0.1

@@ -410,7 +410,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1032892258}
-  sentences: []
+  sentences:
+  - 'THERAPIST: Now, that wasn''t too hard, was it?'
+  - 'THERAPIST: But sometimes, we must learn something not too trivial from our past...'
   typeSpeed: 0.1
   dialogueCanvas: {fileID: 1091694463}
   continueButton: {fileID: 275180660}

@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        SoundtrackManager.instance?.PlayOneShot(jumpSound, 4);
+        SoundtrackManager.instance?.PlayOneShot(jumpSound, 3);
         this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 380);
 
         if (transform.parent != null)

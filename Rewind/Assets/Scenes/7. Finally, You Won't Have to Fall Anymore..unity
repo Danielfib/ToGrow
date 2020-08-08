@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -231,7 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1461638337}
-  sentences: []
+  sentences:
+  - 'THERAPIST: Now... You can open your eyes'
   typeSpeed: 0.1
   dialogueCanvas: {fileID: 468352256}
   continueButton: {fileID: 1562979931}
