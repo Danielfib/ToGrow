@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2. Pitfall.unity
     guid: 3ffad2d36039e1245a74cc50bb3ef680
-  - enabled: 0
-    path: Assets/Scenes/2DPlayground.unity
-    guid: e90f9603db384d14bb998c7763da9379
   - enabled: 1
     path: Assets/Scenes/3. Getting Over It.unity
     guid: 066d068ccc3dcaa408fb9dd372afd5c4
@@ -29,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/5. But Also Know How to Fall.unity
     guid: 3e969db2ee97ddb43aa587de5c91ed8a
+  - enabled: 1
+    path: Assets/Scenes/6. So You Can Get Back Up.unity
+    guid: 25aa5f6aa5741c045af67d2e0995ee2c
   - enabled: 1
     path: Assets/Scenes/FinalScene.unity
     guid: be148859deee78e46b6e2754e8401b2d
