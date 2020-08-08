@@ -14,6 +14,6 @@ public class AnimateCameraIntroduction : MonoBehaviour
 
     private void OnDestroy()
     {
-        cam.transform.position = new Vector3(0,0,-10);
+        //cam.transform.position = new Vector3(0,0,-10);
     }
 }
