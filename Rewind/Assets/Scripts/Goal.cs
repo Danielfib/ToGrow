@@ -5,10 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Goal : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip playerEnteredSound;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            SoundtrackManager.instance.PlayOneShot(playerEnteredSound, 1.5f);
             GameManager.instance.TransitionToNextScene();
         }
     }

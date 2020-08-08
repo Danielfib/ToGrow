@@ -25,7 +25,7 @@ public class LevelTitleCanvasManager : MonoBehaviour
 
     private IEnumerator FadeOutCoroutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         tmp.DOFade(0, 1);
     }
 }
