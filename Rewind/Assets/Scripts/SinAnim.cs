@@ -6,6 +6,7 @@ public class SinAnim : MonoBehaviour
 {
     void Update()
     {
-        transform.position += new Vector3(0f, Mathf.Sin(Time.time) * 0.005f, 0f);
+        if(Time.timeScale > 0)
+            transform.position += new Vector3(0f, Mathf.Sin(Time.time) * 0.005f, 0f);
     }
 }
