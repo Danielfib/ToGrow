@@ -12,7 +12,7 @@ public class Goal : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            SoundtrackManager.instance.PlayOneShot(playerEnteredSound, 1.5f);
+            SoundtrackManager.instance.PlayOneShot(playerEnteredSound, 4f);
             GameManager.instance.TransitionToNextScene();
         }
     }
