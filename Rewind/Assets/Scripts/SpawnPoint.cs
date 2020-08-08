@@ -41,6 +41,7 @@ public class SpawnPoint : MonoBehaviour
         CameraController.instance.GoTo(spawnPos);
         GameObject playerGO = Instantiate(player);
         playerGO.transform.position = spawnPos;
+        playerGO.GetComponent<Player>().lastCheckpoint = this;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
