@@ -9,9 +9,12 @@ public class Player : MonoBehaviour
     private Transform groundCheck;
     [SerializeField]
     private LayerMask whatIsGround;
-
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private AudioClip jumpSound;
+    [SerializeField]
+    private AudioClip dieSound;
 
     private Rigidbody2D rb;
 
@@ -66,6 +69,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
+        SoundtrackManager.instance?.PlayOneShot(jumpSound, 2);
         this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 380);
 
         if (transform.parent != null)
@@ -96,6 +100,10 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        if (lastCheckpoint == null)
+            lastCheckpoint = GameObject.Find("InitialCheckpoint").GetComponent<SpawnPoint>();
+
+        SoundtrackManager.instance?.PlayOneShot(dieSound, 2);
         TimeController.instance.SpawnPlayerAndReverse();
         lastCheckpoint.SpawnPlayer();
         Destroy(this.gameObject);

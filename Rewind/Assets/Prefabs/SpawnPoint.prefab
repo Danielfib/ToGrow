@@ -51,6 +51,7 @@ MonoBehaviour:
   player: {fileID: 2172965463105374473, guid: 23feee6c38df56649b1aad62bae70e56, type: 3}
   normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   greyscale: {fileID: 2100000, guid: df159de153cdc6341bc0ba2f330ba830, type: 2}
+  activatedSound: {fileID: 8300000, guid: bbda99a13ae0bac4486ba680e85c0e0a, type: 3}
 --- !u!212 &8196485283062139326
 SpriteRenderer:
   m_ObjectHideFlags: 0

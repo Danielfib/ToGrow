@@ -14,9 +14,14 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField]
     private Material greyscale;
 
+    [SerializeField]
+    private AudioClip activatedSound;
+
     private SpriteRenderer sr;
     private Light2D light2D;
     private Flickering2DLight flickering2DLight;
+
+    private bool isActive = false;
 
     void Start()
     {
@@ -40,7 +45,8 @@ public class SpawnPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player"
+           && !isActive)
         {
             Player player = collision.GetComponent<Player>();
             player.lastCheckpoint = this;
@@ -56,9 +62,11 @@ public class SpawnPoint : MonoBehaviour
 
     public void ActivateCheckpoint()
     {
+        SoundtrackManager.instance?.PlayOneShot(activatedSound);
         sr.material = normal;
         flickering2DLight.enabled = true;
         light2D.enabled = true;
+        isActive = true;
     }
 
     public void DeactivateCheckpoint()
@@ -66,5 +74,6 @@ public class SpawnPoint : MonoBehaviour
         sr.material = greyscale;
         flickering2DLight.enabled = false;
         light2D.enabled = false;
+        isActive = false;
     }
 }
