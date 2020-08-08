@@ -23,7 +23,7 @@ public class SpawnPoint : MonoBehaviour
 
     private bool isActive = false;
 
-    void Start()
+    void Awake()
     {
         if (GameObject.FindGameObjectWithTag("Player") == null && this.name == "InitialCheckpoint")
         {
