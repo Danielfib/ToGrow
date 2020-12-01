@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -350,13 +351,14 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179c4834709ed6b42b49ed9d7754c66f, type: 2}
-  m_sharedMaterial: {fileID: 3095972542744367982, guid: 179c4834709ed6b42b49ed9d7754c66f,
+  m_fontAsset: {fileID: 11400000, guid: 7e78a5c782b1f7c46ba7116134c4d6a7, type: 2}
+  m_sharedMaterial: {fileID: 4985107618960919633, guid: 7e78a5c782b1f7c46ba7116134c4d6a7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -498,6 +500,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -505,9 +508,8 @@ MonoBehaviour:
 
     Made by Daniel for Brackeys'' 2020 GJ'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179c4834709ed6b42b49ed9d7754c66f, type: 2}
-  m_sharedMaterial: {fileID: 3095972542744367982, guid: 179c4834709ed6b42b49ed9d7754c66f,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23041,6 +23043,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -23048,7 +23051,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179c4834709ed6b42b49ed9d7754c66f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7e78a5c782b1f7c46ba7116134c4d6a7, type: 2}
   m_sharedMaterial: {fileID: 3095972542744367982, guid: 179c4834709ed6b42b49ed9d7754c66f,
     type: 2}
   m_fontSharedMaterials: []
@@ -23127,7 +23130,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -23218,6 +23221,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -24112,14 +24116,14 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_text: You are in peace with your conscience.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 179c4834709ed6b42b49ed9d7754c66f, type: 2}
-  m_sharedMaterial: {fileID: 3095972542744367982, guid: 179c4834709ed6b42b49ed9d7754c66f,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -24161,7 +24165,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 27
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -24347,7 +24351,7 @@ MonoBehaviour:
   - 'THERAPIST: You did great, how are you feeling?'
   - ...
   - 'YOU: Thank... you.'
-  typeSpeed: 0.1
+  typeSpeed: 0.05
   dialogueCanvas: {fileID: 1528457804}
   continueButton: {fileID: 1563564467}
 --- !u!4 &1997831543

@@ -19406,7 +19406,7 @@ MonoBehaviour:
   - 'THERAPIST: Control your conscience through your past. Pay attention on your
     mistakes as they rewind.'
   - 'THERAPIST: So you won''t have to make them more than once.'
-  typeSpeed: 0.1
+  typeSpeed: 0.05
   dialogueCanvas: {fileID: 1973473693}
   continueButton: {fileID: 1661810894}
 --- !u!4 &1574974610
@@ -19464,7 +19464,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 7e78a5c782b1f7c46ba7116134c4d6a7, type: 2}
   m_sharedMaterial: {fileID: 3095972542744367982, guid: 179c4834709ed6b42b49ed9d7754c66f,
     type: 2}
   m_fontSharedMaterials: []
@@ -19543,7 +19543,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -21055,8 +21055,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7e78a5c782b1f7c46ba7116134c4d6a7, type: 2}
+  m_sharedMaterial: {fileID: 4985107618960919633, guid: 7e78a5c782b1f7c46ba7116134c4d6a7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

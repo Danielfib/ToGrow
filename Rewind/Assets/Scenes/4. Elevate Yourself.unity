@@ -413,7 +413,7 @@ MonoBehaviour:
   sentences:
   - 'THERAPIST: Now, that wasn''t too hard, was it?'
   - 'THERAPIST: But sometimes, we must learn something not too trivial from our past...'
-  typeSpeed: 0.1
+  typeSpeed: 0.05
   dialogueCanvas: {fileID: 1091694463}
   continueButton: {fileID: 275180660}
 --- !u!82 &233054689
@@ -1408,8 +1408,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7e78a5c782b1f7c46ba7116134c4d6a7, type: 2}
+  m_sharedMaterial: {fileID: 4985107618960919633, guid: 7e78a5c782b1f7c46ba7116134c4d6a7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2345,7 +2346,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 15
-      m_TileSpriteIndex: 18
+      m_TileSpriteIndex: 45
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2552,7 +2553,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 13
-      m_TileSpriteIndex: 17
+      m_TileSpriteIndex: 18
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3047,7 +3048,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 16
-      m_TileSpriteIndex: 15
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3056,7 +3057,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 11
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3065,7 +3066,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3092,7 +3093,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 6
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3137,7 +3138,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3146,7 +3147,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3155,7 +3156,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4177,6 +4178,8 @@ Tilemap:
       type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 7941609484073417269, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
@@ -4185,9 +4188,6 @@ Tilemap:
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -4120733610244038067, guid: 173ab78f30d604540a40ea5aed1d04e9,
-      type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1153197665627275936, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -6415950992494475051, guid: 173ab78f30d604540a40ea5aed1d04e9,
@@ -4208,25 +4208,25 @@ Tilemap:
     m_Data: {fileID: 7955842037702266429, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 3244912268976917194, guid: 173ab78f30d604540a40ea5aed1d04e9,
+    m_Data: {fileID: -1153197665627275936, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -2362385015635744515, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 6435282499910651038, guid: 173ab78f30d604540a40ea5aed1d04e9,
+    m_Data: {fileID: 3244912268976917194, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -5386141883196422349, guid: 173ab78f30d604540a40ea5aed1d04e9,
+    m_Data: {fileID: 6435282499910651038, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
   - m_RefCount: 8
     m_Data: {fileID: -9052330784833175384, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -5869568833478043496, guid: 173ab78f30d604540a40ea5aed1d04e9,
+    m_Data: {fileID: -5386141883196422349, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -7391823587510444122, guid: 173ab78f30d604540a40ea5aed1d04e9,
+    m_Data: {fileID: -5869568833478043496, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -5925815627476062345, guid: 173ab78f30d604540a40ea5aed1d04e9,
@@ -4304,8 +4304,9 @@ Tilemap:
   - m_RefCount: 4
     m_Data: {fileID: -9005415732836650730, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -7391823587510444122, guid: 173ab78f30d604540a40ea5aed1d04e9,
+      type: 3}
   - m_RefCount: 5
     m_Data: {fileID: -7134858132332368366, guid: 173ab78f30d604540a40ea5aed1d04e9,
       type: 3}
@@ -21666,7 +21667,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 7e78a5c782b1f7c46ba7116134c4d6a7, type: 2}
   m_sharedMaterial: {fileID: 3095972542744367982, guid: 179c4834709ed6b42b49ed9d7754c66f,
     type: 2}
   m_fontSharedMaterials: []
@@ -21745,7 +21746,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
