@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -482,7 +482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 116}
+  m_AnchoredPosition: {x: 0, y: 75}
   m_SizeDelta: {x: 457.2, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &571318281
@@ -508,8 +508,9 @@ MonoBehaviour:
 
     Made by Daniel for Brackeys'' 2020 GJ'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7e78a5c782b1f7c46ba7116134c4d6a7, type: 2}
+  m_sharedMaterial: {fileID: 4985107618960919633, guid: 7e78a5c782b1f7c46ba7116134c4d6a7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -24122,8 +24123,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: You are in peace with your conscience.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7e78a5c782b1f7c46ba7116134c4d6a7, type: 2}
+  m_sharedMaterial: {fileID: 4985107618960919633, guid: 7e78a5c782b1f7c46ba7116134c4d6a7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -24165,7 +24167,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 27
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -24351,7 +24353,6 @@ MonoBehaviour:
   - 'THERAPIST: You did great, how are you feeling?'
   - ...
   - 'YOU: Thank... you.'
-  typeSpeed: 0.05
   dialogueCanvas: {fileID: 1528457804}
   continueButton: {fileID: 1563564467}
 --- !u!4 &1997831543

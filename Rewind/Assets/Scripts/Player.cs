@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        SoundtrackManager.instance?.PlayOneShot(jumpSound, 3);
+        SoundtrackManager.instance?.PlayOneShot(jumpSound, 4);
         this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 380);
 
         if (transform.parent != null)
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
         if (lastCheckpoint == null)
             lastCheckpoint = GameObject.Find("InitialCheckpoint").GetComponent<SpawnPoint>();
 
-        SoundtrackManager.instance?.PlayOneShot(dieSound, 3);
+        SoundtrackManager.instance?.PlayOneShot(dieSound, 4);
         TimeController.instance.SpawnPlayerAndReverse();
         lastCheckpoint.SpawnPlayer();
         Destroy(this.gameObject);
