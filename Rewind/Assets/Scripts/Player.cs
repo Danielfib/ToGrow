@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     {
         animator.SetBool("IsGrounded", IsOnGround());
 
-        this.rb.velocity = new Vector2(Input.GetAxis("Horizontal") * 5, rb.velocity.y);
+        this.rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * 5, rb.linearVelocity.y);
         FlipSpriteOnWalkDirection();
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
 
     private void FlipSpriteOnWalkDirection()
     {
-        float currentVelX = this.gameObject.GetComponent<Rigidbody2D>().velocity.x;
+        float currentVelX = this.gameObject.GetComponent<Rigidbody2D>().linearVelocity.x;
         if (currentVelX < 0)
             transform.eulerAngles = new Vector3(0, 180, 0);
         else if (currentVelX > 0)

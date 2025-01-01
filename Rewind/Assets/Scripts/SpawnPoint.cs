@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class SpawnPoint : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class SpawnPoint : MonoBehaviour
     private AudioClip activatedSound;
 
     private SpriteRenderer sr;
-    private Light2D light2D;
+    private UnityEngine.Rendering.Universal.Light2D light2D;
     private Flickering2DLight flickering2DLight;
 
     private bool isActive = false;
@@ -31,7 +31,7 @@ public class SpawnPoint : MonoBehaviour
         }
 
         sr = GetComponent<SpriteRenderer>();
-        light2D = GetComponent<Light2D>();
+        light2D = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
         flickering2DLight = GetComponent<Flickering2DLight>();
     }
 

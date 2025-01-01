@@ -23,7 +23,7 @@ public class PlayerClone : MonoBehaviour
 
             if (!p.isAvoidingClones)
             {
-                prb.velocity = Vector2.zero;
+                prb.linearVelocity = Vector2.zero;
                 prb.gravityScale = 0;
             }
         }

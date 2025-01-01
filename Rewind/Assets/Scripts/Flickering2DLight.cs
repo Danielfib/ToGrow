@@ -1,19 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
 
-[RequireComponent(typeof(Light2D))]
+
+[RequireComponent(typeof(UnityEngine.Rendering.Universal.Light2D))]
 public class Flickering2DLight : MonoBehaviour
 {
-    private new Light2D light;
+    private new UnityEngine.Rendering.Universal.Light2D light;
     private float randomizer;
     private float backupOuterRadius;
 
     // Start is called before the first frame update
     void Start()
     {
-        light = GetComponent<Light2D>();
+        light = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
         backupOuterRadius = light.pointLightOuterRadius;
     }
 
