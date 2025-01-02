@@ -46,7 +46,8 @@ public class Player : MonoBehaviour
         if (!isOnGround && newIsOnGround)
         {
             //just landed
-            spriteHolder.DOPunchScale(new Vector3(1.2f, -.6f, 1), .4f, 0, 1);
+            spriteHolder.DOComplete();
+            spriteHolder.DOPunchScale(new Vector3(1f, -.6f, 1), .4f, 0, 1);
         }
         isOnGround = newIsOnGround;
         animator.SetBool("IsGrounded", isOnGround);
@@ -67,7 +68,7 @@ public class Player : MonoBehaviour
     {
         if (this.transform.parent == null)
         {
-            if (rb.linearVelocity.y < 0)
+            if (rb.linearVelocity.y <= 0)
             {
                 rb.gravityScale = 3;
             } else if (rb.linearVelocity.y > 0)
@@ -94,7 +95,8 @@ public class Player : MonoBehaviour
     {
         SoundtrackManager.instance?.PlayOneShot(jumpSound, 4);
         this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 380);
-        spriteHolder.DOPunchScale(new Vector3(-.6f, 1.2f, 0f), .4f, 0, 1);
+        spriteHolder.DOComplete();
+        spriteHolder.DOPunchScale(new Vector3(-.6f, 1f, 0f), .4f, 0, 1);
 
         if (transform.parent != null)
             StartCoroutine(AvoidCloneCoroutine());
