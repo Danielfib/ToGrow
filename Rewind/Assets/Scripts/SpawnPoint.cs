@@ -42,10 +42,10 @@ public class SpawnPoint : MonoBehaviour
     public void SpawnPlayer()
     {
         Vector3 spawnPos = new Vector3(this.transform.position.x, this.transform.position.y, 0);
-        CameraController.instance.GoTo(spawnPos);
         GameObject playerGO = Instantiate(player);
         playerGO.transform.position = spawnPos;
         playerGO.GetComponent<Player>().lastCheckpoint = this;
+        CameraController.instance.FollowPlayer(playerGO.transform);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

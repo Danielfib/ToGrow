@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] 
+    private CinemachineCamera cinemachineCamera;
+    
     public static CameraController instance;
 
     private bool isAnimating = false;
@@ -18,6 +22,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this);
+        DontDestroyOnLoad(cinemachineCamera);
     }
 
     private void Update()
@@ -31,12 +36,18 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void GoTo(Vector3 p, float d = 0.3f)
+    private void GoTo(Vector3 p, float d = 0.3f)
     {
         isAnimating = true;
         Vector3 animationTarget = new Vector3(p.x, p.y, this.transform.position.z);
         this.transform.DOMove(animationTarget, d).OnComplete(() => {
             isAnimating = false;
         });
+    }
+
+    public void FollowPlayer(Transform playerTransform)
+    {
+        //GoTo(playerTransform.position);
+        cinemachineCamera.Follow = playerTransform;
     }
 }
