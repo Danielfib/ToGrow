@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] 
+    private Transform spriteHolder;
+    
     [SerializeField]
     private Transform groundCheck;
     [SerializeField]
@@ -24,6 +28,8 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool isAvoidingClones;
 
+    private bool isOnGround;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,14 +42,21 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        animator.SetBool("IsGrounded", IsOnGround());
+        var newIsOnGround = IsOnGround();
+        if (!isOnGround && newIsOnGround)
+        {
+            //just landed
+            spriteHolder.DOPunchScale(new Vector3(1.2f, -.6f, 1), .4f, 0, 1);
+        }
+        isOnGround = newIsOnGround;
+        animator.SetBool("IsGrounded", isOnGround);
 
         this.rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * 5, rb.linearVelocity.y);
         FlipSpriteOnWalkDirection();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (IsOnGround() || this.transform.parent != null)
+            if (isOnGround || this.transform.parent != null)
             {
                 Jump();
             }
@@ -81,6 +94,7 @@ public class Player : MonoBehaviour
     {
         SoundtrackManager.instance?.PlayOneShot(jumpSound, 4);
         this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 380);
+        spriteHolder.DOPunchScale(new Vector3(-.6f, 1.2f, 0f), .4f, 0, 1);
 
         if (transform.parent != null)
             StartCoroutine(AvoidCloneCoroutine());
