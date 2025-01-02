@@ -255,7 +255,7 @@ MonoBehaviour:
   lastCheckpoint: {fileID: 0}
   isAvoidingClones: 0
   initialJumpForce: 230
-  holdForce: 750
+  holdForce: 780
   maxHoldTime: 0.2
 --- !u!96 &2302742860244905072
 TrailRenderer:
