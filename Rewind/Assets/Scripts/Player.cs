@@ -29,6 +29,17 @@ public class Player : MonoBehaviour
     public bool isAvoidingClones;
 
     private bool isOnGround;
+    
+    [Header("Jump")]
+    [SerializeField]
+    private float initialJumpForce = 80f;
+    [SerializeField]
+    private float holdForce = 1000f;
+    [SerializeField]
+    private float maxHoldTime = 0.3f;
+    
+    private bool isJumping;
+    private float jumpHoldTimer;
 
     private void Awake()
     {
@@ -55,12 +66,37 @@ public class Player : MonoBehaviour
         this.rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * 5, rb.linearVelocity.y);
         FlipSpriteOnWalkDirection();
 
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (isOnGround || this.transform.parent != null)
+            if ((isOnGround || this.transform.parent != null)
+                && !isJumping)
             {
                 Jump();
+            } 
+        }
+        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (isJumping)
+            {
+                ProcessJumping();
             }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) || jumpHoldTimer >= maxHoldTime)
+        {
+            isJumping = false;
+        }
+    }
+
+    private void ProcessJumping()
+    {
+        if (jumpHoldTimer < maxHoldTime)
+        {
+            rb.AddForce(Vector3.up * (holdForce * Time.deltaTime));
+            jumpHoldTimer += Time.deltaTime;
         }
     }
 
@@ -93,8 +129,11 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
+        isJumping = true;
+        jumpHoldTimer = 0;
+        
         SoundtrackManager.instance?.PlayOneShot(jumpSound, 4);
-        this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 380);
+        rb.AddForce(Vector3.up * initialJumpForce);
         spriteHolder.DOComplete();
         spriteHolder.DOPunchScale(new Vector3(-.6f, 1f, 0f), .4f, 0, 1);
 
