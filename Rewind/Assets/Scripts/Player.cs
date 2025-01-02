@@ -52,10 +52,20 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(this.transform.parent == null)
-            rb.gravityScale = 1;
+        if (this.transform.parent == null)
+        {
+            if (rb.linearVelocity.y < 0)
+            {
+                rb.gravityScale = 3;
+            } else if (rb.linearVelocity.y > 0)
+            {
+                rb.gravityScale = 1;
+            }
+        }
         else
+        {
             rb.gravityScale = 0;
+        }
     }
 
     private void FlipSpriteOnWalkDirection()
