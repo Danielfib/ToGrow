@@ -12,6 +12,8 @@ public class PlayerClone : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer sr;
+    
+    [SerializeField] private AudioClip latchClip;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,6 +27,7 @@ public class PlayerClone : MonoBehaviour
             {
                 prb.linearVelocity = Vector2.zero;
                 prb.gravityScale = 0;
+                SoundtrackManager.instance.PlayOneShot(latchClip, 2f);
             }
         }
     }
