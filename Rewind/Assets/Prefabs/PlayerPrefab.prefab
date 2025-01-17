@@ -254,6 +254,7 @@ MonoBehaviour:
   dieSound: {fileID: 8300000, guid: 70f7e98a21dfc2548a1b4601574db396, type: 3}
   lastCheckpoint: {fileID: 0}
   isAvoidingClones: 0
+  coyoteTimeDuration: 1
   initialJumpForce: 230
   holdForce: 780
   maxHoldTime: 0.2
@@ -416,7 +417,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.027757049, y: -0.14161895}
+  m_Offset: {x: 0.020081148, y: -0.19918859}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -426,7 +427,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0629551, y: 0.8375194}
+  m_Size: {x: 0.77894497, y: 0.72238016}
   m_EdgeRadius: 0
 --- !u!50 &8834674543534499747
 Rigidbody2D:

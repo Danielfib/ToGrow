@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
 
     private bool isOnGround;
     
+    [SerializeField] private float coyoteTimeDuration;
+    private float coyoteTimer;
+    
     [Header("Jump")]
     [SerializeField]
     private float initialJumpForce = 80f;
@@ -57,10 +60,16 @@ public class Player : MonoBehaviour
         if (!isOnGround && newIsOnGround)
         {
             //just landed
+            coyoteTimer = coyoteTimeDuration;
             spriteHolder.DOComplete();
             spriteHolder.DOPunchScale(new Vector3(1f, -.6f, 1), .4f, 0, 1);
         }
+        
         isOnGround = newIsOnGround;
+        if (!isOnGround)
+        {
+            coyoteTimer -= Time.deltaTime;
+        }
         animator.SetBool("IsGrounded", isOnGround);
 
         this.rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * 5, rb.linearVelocity.y);
@@ -70,7 +79,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if ((isOnGround || this.transform.parent != null)
+            if ((coyoteTimer > 0 || isOnGround || this.transform.parent != null)
                 && !isJumping)
             {
                 Jump();
@@ -130,9 +139,11 @@ public class Player : MonoBehaviour
     void Jump()
     {
         isJumping = true;
+        coyoteTimer = 0;
         jumpHoldTimer = 0;
         
         SoundtrackManager.instance?.PlayOneShot(jumpSound, 4);
+        rb.linearVelocity = Vector2.zero;
         rb.AddForce(Vector3.up * initialJumpForce);
         spriteHolder.DOComplete();
         spriteHolder.DOPunchScale(new Vector3(-.6f, 1f, 0f), .4f, 0, 1);
