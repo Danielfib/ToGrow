@@ -45,7 +45,8 @@ public class SpawnPoint : MonoBehaviour
         GameObject playerGO = Instantiate(player);
         playerGO.transform.position = spawnPos;
         playerGO.GetComponent<Player>().lastCheckpoint = this;
-        CameraController.instance.FollowPlayer(playerGO.transform);
+        var cameraController = FindFirstObjectByType<CameraController>();
+        cameraController.FollowPlayer(playerGO.transform);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,7 +58,7 @@ public class SpawnPoint : MonoBehaviour
             player.lastCheckpoint = this;
             ActivateCheckpoint();
 
-            var otherCheckpoints = GameObject.FindObjectsOfType<SpawnPoint>().Where(x => x != this);
+            var otherCheckpoints = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None).Where(x => x != this);
             foreach(var otherCheckpoint in otherCheckpoints)
             {
                 otherCheckpoint.DeactivateCheckpoint();

@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class AnimateCameraIntroduction : MonoBehaviour
 {
-    [SerializeField]
-    private Transform cam;
+    [SerializeField] private Transform cam;
+    [SerializeField] private float speed;
     
     void Update()
     {
-        cam.transform.position += new Vector3(0.1f, 0, 0);
-    }
-
-    private void OnDestroy()
-    {
-        //cam.transform.position = new Vector3(0,0,-10);
+        cam.transform.position += Vector3.right * Time.deltaTime * speed;
     }
 }

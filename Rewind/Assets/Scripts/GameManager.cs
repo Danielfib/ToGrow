@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
         if (currentLvl == SceneManager.sceneCountInBuildSettings - 1)
         {
             //ending scene
-            GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 0, -10);
-            GameObject.FindObjectOfType<CanvasGroup>().DOFade(0, 1);
+            FindFirstObjectByType<Camera>().transform.position = new Vector3(0, 0, -10);
+            FindFirstObjectByType<CanvasGroup>().DOFade(0, 1);
         }
         else
         {

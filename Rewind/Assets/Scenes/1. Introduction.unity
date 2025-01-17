@@ -1945,7 +1945,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de62282b8edadd14b96a460a10c8883f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 814636502}
+  cam: {fileID: 1520593038}
+  speed: 10
 --- !u!4 &1361430471
 Transform:
   m_ObjectHideFlags: 0
