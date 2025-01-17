@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<TrailRenderer>().time = TimeController.instance.recordTime;
+        GetComponentInChildren<TrailRenderer>().time = TimeController.instance.recordTime;
     }
 
     void Update()
