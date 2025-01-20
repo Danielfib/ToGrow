@@ -412,9 +412,12 @@ MonoBehaviour:
   lastCheckpoint: {fileID: 0}
   isAvoidingClones: 0
   coyoteTimeDuration: 1
-  initialJumpForce: 230
-  holdForce: 780
+  speed: 6
+  initialJumpForce: 400
+  holdForce: 1400
   maxHoldTime: 0.2
+  gravityScaleUpwards: 3
+  gravityScaleDownwards: 5
 --- !u!50 &8834674543534499747
 Rigidbody2D:
   serializedVersion: 5

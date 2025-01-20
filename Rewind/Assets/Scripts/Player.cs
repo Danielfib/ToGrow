@@ -34,13 +34,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float coyoteTimeDuration;
     private float coyoteTimer;
     
+    [SerializeField] private float speed = 6;
+    
     [Header("Jump")]
-    [SerializeField]
-    private float initialJumpForce = 80f;
-    [SerializeField]
-    private float holdForce = 1000f;
-    [SerializeField]
-    private float maxHoldTime = 0.3f;
+    [SerializeField] private float initialJumpForce = 200f;
+    [SerializeField] private float holdForce = 1000f;
+    [SerializeField] private float maxHoldTime = 0.3f;
+    [SerializeField] private float gravityScaleUpwards = 3f;
+    [SerializeField] private float gravityScaleDownwards = 9f;
     
     private bool isJumping;
     private float jumpHoldTimer;
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour
         }
         animator.SetBool("IsGrounded", isOnGround);
 
-        this.rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * 5, rb.linearVelocity.y);
+        this.rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.linearVelocity.y);
         FlipSpriteOnWalkDirection();
 
 
@@ -119,16 +120,10 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (this.transform.parent == null
+        if (transform.parent == null
             && !isDying)
         {
-            if (rb.linearVelocity.y <= 0)
-            {
-                rb.gravityScale = 3;
-            } else if (rb.linearVelocity.y > 0)
-            {
-                rb.gravityScale = 1;
-            }
+            rb.gravityScale = rb.linearVelocity.y <= 0 ? gravityScaleDownwards : gravityScaleUpwards;
         }
         else
         {
