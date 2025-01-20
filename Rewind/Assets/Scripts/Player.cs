@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     private float coyoteTimer;
     
     [SerializeField] private float speed = 6;
+    [SerializeField] private float maxSpeed = 6;
     
     [Header("Jump")]
     [SerializeField] private float initialJumpForce = 200f;
@@ -112,6 +113,11 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) || jumpHoldTimer >= maxHoldTime)
         {
             isJumping = false;
+        }
+
+        if (rb.linearVelocity.magnitude > maxSpeed)
+        {
+            rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
         }
     }
 

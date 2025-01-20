@@ -417,6 +417,7 @@ MonoBehaviour:
   isAvoidingClones: 0
   coyoteTimeDuration: 1
   speed: 7
+  maxSpeed: 35
   initialJumpForce: 400
   holdForce: 1500
   maxHoldTime: 0.2
@@ -537,8 +538,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.09747657}
-  m_Size: {x: 0.7487333, y: 0.9865549}
+  m_Offset: {x: 0, y: 0.0054432154}
+  m_Size: {x: 0.8, y: 1.2}
   m_Direction: 0
 --- !u!1 &6179058648116029852
 GameObject:
