@@ -199,4 +199,10 @@ public class Player : MonoBehaviour
         lastCheckpoint.SpawnPlayer();
         Destroy(this.gameObject);
     }
+
+    public void AnimateLatch(Vector3 transformPosition)
+    {
+        var normalizedDir = (transformPosition - transform.position).normalized; 
+        spriteHolder.DOPunchScale(normalizedDir, .4f, 0, 1);
+    }
 }

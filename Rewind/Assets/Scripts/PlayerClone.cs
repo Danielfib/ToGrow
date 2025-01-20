@@ -27,8 +27,8 @@ public class PlayerClone : MonoBehaviour
             {
                 prb.linearVelocity = Vector2.zero;
                 prb.gravityScale = 0;
+                p.AnimateLatch(transform.position);
                 SoundtrackManager.instance.PlayOneShot(latchClip, 2f);
-                //TODO: go to latching animation
             }
         }
     }
