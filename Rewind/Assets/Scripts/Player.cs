@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
             //just landed
             coyoteTimer = coyoteTimeDuration;
             spriteHolder.DOComplete();
-            spriteHolder.DOPunchScale(new Vector3(1f, -.6f, 1), .4f, 0, 1);
+            spriteHolder.DOPunchScale(new Vector3(1f, -.6f, 1), .3f, 0, 1);
         }
         
         isOnGround = newIsOnGround;
@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(Vector3.up * initialJumpForce);
         spriteHolder.DOComplete();
-        spriteHolder.DOPunchScale(new Vector3(-.6f, 1f, 0f), .4f, 0, 1);
+        spriteHolder.DOPunchScale(new Vector3(-.6f, 1f, 0f), .3f, 0, 1);
 
         if (transform.parent != null)
             StartCoroutine(AvoidCloneCoroutine());
@@ -187,7 +187,8 @@ public class Player : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         isDying = true;
-        spriteHolder.DOScale(Vector3.one * .4f, .35f).SetEase(Ease.OutBounce).OnComplete(OnDieAnimationFinish);
+        spriteHolder.DOComplete();
+        spriteHolder.DOScale(Vector3.one * .4f, .2f).SetEase(Ease.OutBounce).OnComplete(OnDieAnimationFinish);
     }
 
     private void OnDieAnimationFinish()
@@ -203,7 +204,8 @@ public class Player : MonoBehaviour
 
     public void AnimateLatch(Vector3 transformPosition)
     {
-        var normalizedDir = (transformPosition - transform.position).normalized; 
+        var normalizedDir = (transformPosition - transform.position).normalized;
+        spriteHolder.DOComplete();
         spriteHolder.DOPunchScale(normalizedDir, .4f, 0, 1);
     }
 }
