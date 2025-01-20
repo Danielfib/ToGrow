@@ -74,6 +74,11 @@ public class Player : MonoBehaviour
             spriteHolder.DOComplete();
             spriteHolder.DOPunchScale(new Vector3(1f, -.6f, 1), .3f, 0, 1);
         }
+
+        if (newIsOnClone)
+        {
+            coyoteTimer = coyoteTimeDuration;
+        }
         
         isOnGround = newIsOnGround;
         if (!isOnGround && !newIsOnClone)
