@@ -18,6 +18,10 @@ public class LevelTitleCanvasManager : MonoBehaviour
     private void OnLevelWasLoaded(int level)
     {
         string lvlName = SceneManager.GetSceneByBuildIndex(level).name;
+        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            return;
+        }
         tmp.text = lvlName;
 
         tmp.DOFade(1, 2).OnComplete(() => StartCoroutine(FadeOutCoroutine()));
