@@ -43,6 +43,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float gravityScaleUpwards = 3f;
     [SerializeField] private float gravityScaleDownwards = 9f;
     
+    [Header("Camera Shake")]
+    [SerializeField] private CinemachineImpulseSource impulseSource;
+    
     private bool isJumping;
     private float jumpHoldTimer;
     
@@ -184,8 +187,9 @@ public class Player : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         isDying = true;
         SoundtrackManager.instance?.PlayOneShot(dieSound, 4);
+        DoCameraShake();
         spriteHolder.DOComplete();
-        spriteHolder.DOScale(Vector3.one * .4f, .2f).SetEase(Ease.OutBounce).OnComplete(OnDieAnimationFinish);
+        spriteHolder.DOScale(Vector3.one * .4f, .3f).SetEase(Ease.OutBounce).OnComplete(OnDieAnimationFinish);
     }
 
     private void OnDieAnimationFinish()
@@ -203,5 +207,10 @@ public class Player : MonoBehaviour
         var normalizedDir = (transformPosition - transform.position).normalized;
         spriteHolder.DOComplete();
         spriteHolder.DOPunchScale(normalizedDir, .4f, 0, 1);
+    }
+
+    public void DoCameraShake()
+    {
+        impulseSource.GenerateImpulse(2f);
     }
 }

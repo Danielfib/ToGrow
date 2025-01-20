@@ -364,6 +364,7 @@ GameObject:
   - component: {fileID: 2172965463105374474}
   - component: {fileID: 8834674543534499747}
   - component: {fileID: 6862234206432038949}
+  - component: {fileID: 3259516170096637904}
   m_Layer: 10
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -418,6 +419,7 @@ MonoBehaviour:
   maxHoldTime: 0.2
   gravityScaleUpwards: 3
   gravityScaleDownwards: 5
+  impulseSource: {fileID: 3259516170096637904}
 --- !u!50 &8834674543534499747
 Rigidbody2D:
   serializedVersion: 5
@@ -479,8 +481,61 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.29}
-  m_Radius: 0.3
+  m_Offset: {x: 0, y: -0.2}
+  m_Radius: 0.39
+--- !u!114 &3259516170096637904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2172965463105374473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 2
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &6179058648116029852
 GameObject:
   m_ObjectHideFlags: 0
