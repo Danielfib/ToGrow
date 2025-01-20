@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     
     private bool isJumping;
     private float jumpHoldTimer;
+    
+    private bool isDying;
 
     private void Awake()
     {
@@ -56,6 +58,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (isDying)
+        {
+            return;
+        }
+        
         var newIsOnGround = IsOnGround();
         if (!isOnGround && newIsOnGround)
         {
@@ -111,7 +118,8 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (this.transform.parent == null)
+        if (this.transform.parent == null
+            && !isDying)
         {
             if (rb.linearVelocity.y <= 0)
             {
@@ -175,6 +183,13 @@ public class Player : MonoBehaviour
     }
 
     public void Die()
+    {
+        rb.linearVelocity = Vector2.zero;
+        isDying = true;
+        spriteHolder.DOScale(Vector3.one * .4f, .5f).SetEase(Ease.OutBounce).OnComplete(OnDieAnimationFinish);
+    }
+
+    private void OnDieAnimationFinish()
     {
         if (lastCheckpoint == null)
             lastCheckpoint = GameObject.Find("InitialCheckpoint").GetComponent<SpawnPoint>();
