@@ -10,16 +10,12 @@ public class Player : MonoBehaviour
     [SerializeField] 
     private Transform spriteHolder;
     
-    [SerializeField]
-    private Transform groundCheck;
-    [SerializeField]
-    private LayerMask whatIsGround;
-    [SerializeField]
-    private Animator animator;
-    [SerializeField]
-    private AudioClip jumpSound;
-    [SerializeField]
-    private AudioClip dieSound;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private LayerMask whatIsClone;
+    [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip dieSound;
 
     private Rigidbody2D rb;
 
@@ -69,16 +65,18 @@ public class Player : MonoBehaviour
         }
         
         var newIsOnGround = IsOnGround();
+        var newIsOnClone = IsLatchedToClone();
+        
         if (!isOnGround && newIsOnGround)
         {
-            //just landed
+            //just landed on ground
             coyoteTimer = coyoteTimeDuration;
             spriteHolder.DOComplete();
             spriteHolder.DOPunchScale(new Vector3(1f, -.6f, 1), .3f, 0, 1);
         }
         
         isOnGround = newIsOnGround;
-        if (!isOnGround)
+        if (!isOnGround && !newIsOnClone)
         {
             coyoteTimer -= Time.deltaTime;
         }
@@ -91,7 +89,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if ((coyoteTimer > 0 || isOnGround || this.transform.parent != null)
+            if ((coyoteTimer > 0 || isOnGround || newIsOnClone || this.transform.parent != null)
                 && !isJumping)
             {
                 Jump();
@@ -174,6 +172,21 @@ public class Player : MonoBehaviour
         foreach(var col in colliding)
         {
             if(whatIsGround == (whatIsGround | (1 << col.gameObject.layer)))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    private bool IsLatchedToClone()
+    {
+        Collider2D[] colliding = Physics2D.OverlapCircleAll(this.groundCheck.position, 0.2f);
+
+        foreach(var col in colliding)
+        {
+            if(whatIsClone == (whatIsClone | (1 << col.gameObject.layer)))
             {
                 return true;
             }

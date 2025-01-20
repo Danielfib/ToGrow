@@ -406,7 +406,10 @@ MonoBehaviour:
   groundCheck: {fileID: 2172965462304773202}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 256
+  whatIsClone:
+    serializedVersion: 2
+    m_Bits: 512
   animator: {fileID: 3579016256248730609}
   jumpSound: {fileID: 8300000, guid: 70c20acffe17e634db8d833a23ba580b, type: 3}
   dieSound: {fileID: 8300000, guid: 70f7e98a21dfc2548a1b4601574db396, type: 3}
