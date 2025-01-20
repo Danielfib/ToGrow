@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -186,7 +187,7 @@ public class Player : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         isDying = true;
-        spriteHolder.DOScale(Vector3.one * .4f, .5f).SetEase(Ease.OutBounce).OnComplete(OnDieAnimationFinish);
+        spriteHolder.DOScale(Vector3.one * .4f, .35f).SetEase(Ease.OutBounce).OnComplete(OnDieAnimationFinish);
     }
 
     private void OnDieAnimationFinish()
