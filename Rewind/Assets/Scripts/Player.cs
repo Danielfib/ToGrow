@@ -132,6 +132,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(0, rb.linearVelocity.y));
             rb.gravityScale = 0;
         }
     }
