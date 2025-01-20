@@ -183,6 +183,7 @@ public class Player : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         isDying = true;
+        SoundtrackManager.instance?.PlayOneShot(dieSound, 4);
         spriteHolder.DOComplete();
         spriteHolder.DOScale(Vector3.one * .4f, .2f).SetEase(Ease.OutBounce).OnComplete(OnDieAnimationFinish);
     }
@@ -192,7 +193,6 @@ public class Player : MonoBehaviour
         if (lastCheckpoint == null)
             lastCheckpoint = GameObject.Find("InitialCheckpoint").GetComponent<SpawnPoint>();
 
-        SoundtrackManager.instance?.PlayOneShot(dieSound, 4);
         TimeController.instance.SpawnPlayerAndReverse();
         lastCheckpoint.SpawnPlayer();
         Destroy(this.gameObject);
